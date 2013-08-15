@@ -15,10 +15,9 @@ listValidTags = list(validTags)
 
 onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 
-for f in onlyfiles[0:5]:
+for f in onlyfiles:
     entradaTweets = gzip.open(mypath+f,"r")
     for line in entradaTweets:
-        print line
         tags = {tag.strip("#").strip() for tag in line.split() if tag.startswith("#")}
         tagsUsed = validTags & tags
         tagUsedTranformed = {str(listValidTags.index(tag)) for tag in tagsUsed}
