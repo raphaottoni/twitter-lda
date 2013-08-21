@@ -6,12 +6,14 @@ import gzip
 mypath = "../../data/tweets_clean/"
 hashtags = open("../../data/top-hash-tags/top300hashtags","r")
 wordsToRemove = open("../../data/top-words/unwanted-words","r")
-saida = open("../../data/entradaLDA/tweetDocument","w")
+saida = gzip.open("../../data/entradaLDA/tweetDocument.gz","w")
 
 validTags = {tag.strip("#").strip() for tag in hashtags}
 invalidWords = {word.strip() for word in wordsToRemove}
 listValidTags = list(validTags)
 
+hashtags.close()
+wordsToRemove.close()
 
 onlyfiles = [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]
 
@@ -25,5 +27,6 @@ for f in onlyfiles:
         wordsUsed = words - invalidWords
         if (tagUsedTranformed):
             saida.write("["+' '.join(tagUsedTranformed) +"] " + ' '.join(wordsUsed)+"\n")
-        elif (wordsUsed)
+        elif (wordsUsed):
             saida.write(' '.join(wordsUsed).strip()+"\n")
+saida.close()
