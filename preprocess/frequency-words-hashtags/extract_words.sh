@@ -6,7 +6,7 @@
 ## Darvin's grep does not support Perl expressions, 
 ##  but it's Extended regexp can be non-greedy.
 ## So I did this small patch
-unamestr=`Linux`
+unamestr='Linux'
 if [[ "$unamestr" == "Linux" ]]; then
     arg=P
 else

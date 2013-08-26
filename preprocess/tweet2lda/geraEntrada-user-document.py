@@ -6,7 +6,7 @@ import gzip
 mypath = "../../data/tweets_clean/"
 hashtags = open("../../data/top-hash-tags/top300hashtags","r")
 wordsToRemove = open("../../data/top-words/unwanted-words","r")
-saida = gzip.open("../../data/entradaLDA/userDocument","w")
+saida = gzip.open("../../data/entradaLDA/userDocument.gz","w")
 
 validTags = {tag.strip("#").strip() for tag in hashtags}
 invalidWords = {word.strip() for word in wordsToRemove}
